@@ -13,6 +13,12 @@ router.get("/pokemon", (req, res) => {
   res.status(data.status).json(data);
 });
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+router.get("/pokemon/:id", (req, res, _next) => {
+  const data = pokemonRepository.getById(req.params.id);
+  res.status(data.status).json(data);
+});
+
 app.use("/api/", router);
 
 app.listen(PORT, () => {

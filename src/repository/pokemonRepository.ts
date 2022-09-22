@@ -20,6 +20,21 @@ const pokemonRepository = {
       ],
     };
   },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  getById: function (_id: string): GetResponseType {
+    return {
+      status: 200,
+      statusText: "OK",
+      message: "all pokemon",
+      data: [
+        {
+          uniqueId: "1",
+          name: "pikachu",
+          trainer: "ash",
+        },
+      ],
+    };
+  },
 };
 
 export default pokemonRepository;
