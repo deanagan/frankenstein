@@ -125,3 +125,13 @@ should see: `Hello basic setup!`
 
 
 22. To run, `npm run develop`
+
+
+23. Adding `debug`
+`npm install --save debug`
+`npm install --save-dev @types/debug`
+
+To debug with debug logging on in windows, use `npm run windev`. This allows for debug logging to show. Note that windows uses `set DEBUG=app & nodemon`.
+For Mac and *nix systems, use `npm run macdev`. Mac and *nix systems, we use `DEBUG=app nodemon`
+
+If you want to **enable all debug logs (including express)**, set `DEBUG=*`

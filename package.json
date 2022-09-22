@@ -1,10 +1,12 @@
 {
-  "name": "dreamcharlie",
+  "name": "pokemon-collection-tracker",
   "version": "1.0.0",
   "description": "Pokemon Card Collection Backend",
   "main": "index.js",
   "scripts": {
     "develop": "nodemon",
+    "macdev": "DEBUG=app nodemon",
+    "windev": "set DEBUG=app & nodemon",
     "build": "rimraf ./build && tsc",
     "lint": "eslint . --ext .ts",
     "production": "npm run build && node build/index.js",
@@ -13,6 +15,7 @@
   "author": "Dean Agan",
   "license": "ISC",
   "devDependencies": {
+    "@types/debug": "^4.1.7",
     "@types/node": "^14.14.37",
     "@typescript-eslint/eslint-plugin": "^4.20.0",
     "@typescript-eslint/parser": "^4.20.0",
@@ -28,6 +31,7 @@
   "dependencies": {
     "@types/express": "^4.17.11",
     "chalk": "^4.1.2",
+    "debug": "^4.3.4",
     "express": "^4.17.1"
   }
 }
