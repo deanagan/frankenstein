@@ -4,4 +4,10 @@ type PokemonDataType = {
   trainer: string;
 };
 
-export default PokemonDataType;
+type PokemonDataSearchType = {
+  uniqueId: string | null;
+  name: string | null;
+  trainer: string | null;
+};
+
+export { PokemonDataType, PokemonDataSearchType };

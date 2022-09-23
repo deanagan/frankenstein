@@ -1,46 +1,17 @@
 import express from "express";
 import chalk from "chalk";
 import Debug from "debug";
-import HttpCode from "http-codes";
-import pokemonRepository from "./repository/pokemonRepository";
+import * as pokemonController from "./controllers/pokemonController";
 
 const app = express();
 const debug = Debug("app");
 const PORT = process.env.PORT || 8081;
 const router = express.Router();
 
-router.get("/pokemon", (req, res, next) => {
-  pokemonRepository.get(
-    (data) => {
-      res.status(HttpCode.OK).json({
-        status: HttpCode.OK,
-        statusText: "OK",
-        message: "all pokemon",
-        data,
-      });
-    },
-    (err) => next(err)
-  );
-});
-
-router.get("/pokemon/:id", (req, res, next) => {
-  pokemonRepository.getById(
-    req.params.id,
-    (data) => {
-      if (data) {
-        res.status(HttpCode.OK).json({
-          status: HttpCode.OK,
-          statusText: "OK",
-          message: "get pokemon by id",
-          data,
-        });
-      } else {
-        res.status(HttpCode.NOT_FOUND).json({});
-      }
-    },
-    (err) => next(err)
-  );
-});
+// Pokemon Endpoints
+router.get("/pokemon", pokemonController.getPokemon);
+router.get("/pokemon/search", pokemonController.searchPokemon);
+router.get("/pokemon/:id", pokemonController.getPokemonById);
 
 app.use("/api/", router);
 
