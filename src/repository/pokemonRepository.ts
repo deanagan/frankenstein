@@ -1,39 +1,27 @@
-import GetResponseType from "../types.ts/getResponseType";
+import fs from "fs";
+import PokemonDataType from "../types.ts/pokemonDataType";
+import { RejectCallback, ResolveCallback } from "../types.ts/common";
+
+const FILENAME = "./src/assets/pokemon.json";
 
 const pokemonRepository = {
-  get: function (): GetResponseType {
-    return {
-      status: 200,
-      statusText: "OK",
-      message: "all pokemon",
-      data: [
-        {
-          uniqueId: "1",
-          name: "pikachu",
-          trainer: "ash",
-        },
-        {
-          uniqueId: "2",
-          name: "charizard",
-          trainer: "brock",
-        },
-      ],
-    };
+  get: (resolve: ResolveCallback, reject: RejectCallback): void => {
+    fs.readFile(FILENAME, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(JSON.parse(data.toString()));
+      }
+    });
   },
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  getById: function (_id: string): GetResponseType {
-    return {
-      status: 200,
-      statusText: "OK",
-      message: "all pokemon",
-      data: [
-        {
-          uniqueId: "1",
-          name: "pikachu",
-          trainer: "ash",
-        },
-      ],
-    };
+  getById: (id: string, resolve: ResolveCallback, reject: RejectCallback): void => {
+    fs.readFile(FILENAME, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(JSON.parse(data.toString()).find((pe: PokemonDataType) => pe.uniqueId === id));
+      }
+    });
   },
 };
 
