@@ -58,6 +58,32 @@ const pokemonRepository = {
       }
     });
   },
+  update: (
+    pokemonUpdate: PokemonDataType,
+    uniqueId: string,
+    resolve: ResolveCallback,
+    reject: RejectCallback
+  ): void => {
+    fs.readFile(FILENAME, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        const currentPokemonList = JSON.parse(data.toString());
+
+        const updatedPokemonList = currentPokemonList.map((pokemon: PokemonDataType) =>
+          pokemon.uniqueId === uniqueId ? { ...pokemon, ...pokemonUpdate } : pokemon
+        );
+
+        fs.writeFile(FILENAME, JSON.stringify(updatedPokemonList), (err) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          resolve(updatedPokemonList.find((pokemon: PokemonDataType) => pokemon.uniqueId === uniqueId));
+        });
+      }
+    });
+  },
 };
 
 export default pokemonRepository;

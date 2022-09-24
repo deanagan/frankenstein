@@ -67,7 +67,7 @@ const addPokemon = (req: Request, res: Response, next: NextFunction): void => {
     req.body,
     (data) => {
       if (data) {
-        res.status(HttpCode.OK).json({
+        res.status(HttpCode.CREATED).json({
           status: HttpCode.CREATED,
           statusText: "Created",
           message: "new pokemon added",
@@ -81,4 +81,24 @@ const addPokemon = (req: Request, res: Response, next: NextFunction): void => {
   );
 };
 
-export { getPokemon, searchPokemon, getPokemonById, addPokemon };
+const updatePokemon = (req: Request, res: Response, next: NextFunction): void => {
+  pokemonRepository.update(
+    req.body,
+    req.params.id,
+    (data) => {
+      if (data) {
+        res.status(HttpCode.OK).json({
+          status: HttpCode.OK,
+          statusText: "Update",
+          message: "pokemon updated",
+          data,
+        });
+      } else {
+        res.status(HttpCode.BAD_REQUEST).json({});
+      }
+    },
+    (err) => next(err)
+  );
+};
+
+export { getPokemon, searchPokemon, getPokemonById, addPokemon, updatePokemon };
