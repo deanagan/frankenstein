@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import HttpCode from "http-codes";
-import pokemonRepository from "../repository/pokemonRepository";
-import { PokemonDataSearchType, PokemonDataType } from "../types.ts/pokemonDataType";
+import pokemonRepository from "../repository/pokemon.repository";
+import { PokemonDataSearchType, PokemonDataType } from "../types.ts/pokemon.data.type";
 
 const getPokemon = (req: Request, res: Response, next: NextFunction): void => {
   pokemonRepository.get(
@@ -62,4 +62,23 @@ const getPokemonById = (req: Request, res: Response, next: NextFunction): void =
   );
 };
 
-export { getPokemon, searchPokemon, getPokemonById };
+const addPokemon = (req: Request, res: Response, next: NextFunction): void => {
+  pokemonRepository.insert(
+    req.body,
+    (data) => {
+      if (data) {
+        res.status(HttpCode.OK).json({
+          status: HttpCode.CREATED,
+          statusText: "Created",
+          message: "new pokemon added",
+          data,
+        });
+      } else {
+        res.status(HttpCode.INTERNAL_SERVER_ERROR).json({});
+      }
+    },
+    (err) => next(err)
+  );
+};
+
+export { getPokemon, searchPokemon, getPokemonById, addPokemon };

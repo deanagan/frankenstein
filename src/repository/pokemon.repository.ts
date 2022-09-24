@@ -1,5 +1,6 @@
 import fs from "fs";
-import { PokemonDataSearchType, PokemonDataType } from "../types.ts/pokemonDataType";
+import { v4 as uuidv4 } from "uuid";
+import { PokemonDataSearchType, PokemonDataType } from "../types.ts/pokemon.data.type";
 import { RejectCallback, ResolveCallback } from "../types.ts/common";
 
 const FILENAME = "./src/assets/pokemon.json";
@@ -35,6 +36,25 @@ const pokemonRepository = {
             (searchObject.trainer && pe.trainer.toLowerCase().indexOf(searchObject.trainer.toLowerCase()) >= 0)
         );
         resolve(filteredData);
+      }
+    });
+  },
+  insert: (newPokemon: PokemonDataType, resolve: ResolveCallback, reject: RejectCallback): void => {
+    fs.readFile(FILENAME, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        const currentPokemonList = JSON.parse(data.toString());
+        const pokemonUniqueId = { uniqueId: uuidv4() };
+        const pokemon = { ...pokemonUniqueId, ...newPokemon };
+        currentPokemonList.push(pokemon);
+        fs.writeFile(FILENAME, JSON.stringify(currentPokemonList), (err) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          resolve(pokemon);
+        });
       }
     });
   },

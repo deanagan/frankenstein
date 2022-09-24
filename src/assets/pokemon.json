@@ -1,17 +1,1 @@
-[
-    {
-      "uniqueId": "1",
-      "name": "pikachu",
-      "trainer": "ash"
-    },
-    {
-      "uniqueId": "2",
-      "name": "charizard",
-      "trainer": "brock"
-    },
-    {
-        "uniqueId": "3",
-        "name": "evee",
-        "trainer": "eddy"
-    }
-]
+[{"uniqueId":"8a17d4ca-2d9d-41ec-a3c9-5fcf2de3b83e","name":"pikachu","trainer":"ash"},{"uniqueId":"0b56649a-3272-4066-9632-8a93be6a05d9","name":"charizard","trainer":"brock"},{"uniqueId":"34ed688b-d7d6-4a8f-8784-e1869cbe1f89","name":"evee","trainer":"eddy"},{"uniqueId":"6399662b-6d9a-4a6f-8284-fb8f53f7faed","name":"beedrill","trainer":"bea"}]
