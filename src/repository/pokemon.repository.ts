@@ -69,17 +69,29 @@ const pokemonRepository = {
         reject(err);
       } else {
         const currentPokemonList = JSON.parse(data.toString());
+        const pokemonToUpdate = currentPokemonList.find((pokemon: PokemonDataType) => pokemon.uniqueId === uniqueId);
 
-        const updatedPokemonList = currentPokemonList.map((pokemon: PokemonDataType) =>
-          pokemon.uniqueId === uniqueId ? { ...pokemon, ...pokemonUpdate } : pokemon
-        );
+        let updatedPokemonList: PokemonDataType[] = [];
+        if (pokemonToUpdate) {
+          updatedPokemonList = currentPokemonList.map((pokemon: PokemonDataType) =>
+            pokemon.uniqueId === uniqueId ? { ...pokemon, ...pokemonUpdate } : pokemon
+          );
+        } else {
+          const pokemonUniqueId = { uniqueId };
+          const pokemon = { ...pokemonUniqueId, ...pokemonUpdate };
+
+          if (!Object.prototype.hasOwnProperty.call(pokemon, "trainer")) {
+            pokemon.trainer = "wild - no trainer";
+          }
+          updatedPokemonList = [...currentPokemonList, pokemon];
+        }
 
         fs.writeFile(FILENAME, JSON.stringify(updatedPokemonList), (err) => {
           if (err) {
             reject(err);
             return;
           }
-          resolve(updatedPokemonList.find((pokemon: PokemonDataType) => pokemon.uniqueId === uniqueId));
+          resolve(updatedPokemonList.find((pokemon) => pokemon.uniqueId === uniqueId));
         });
       }
     });
