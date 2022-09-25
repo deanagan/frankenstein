@@ -70,6 +70,10 @@ const pokemonRepository = {
       if (err) {
         reject(err);
       } else {
+        if (Object.prototype.hasOwnProperty.call(pokemonUpdate, "isDeleted")) {
+          resolve(null);
+          return;
+        }
         const currentPokemonList = JSON.parse(data.toString());
         const pokemonToUpdate = currentPokemonList.find(
           (pokemon: PokemonDataType) => pokemon.uniqueId === uniqueId && !pokemon.isDeleted
@@ -87,7 +91,7 @@ const pokemonRepository = {
             reject(err);
             return;
           }
-          resolve({});
+          resolve(updatedPokemonList.find((upd: PokemonDataType) => upd.uniqueId === uniqueId));
         });
       }
     });

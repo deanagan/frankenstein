@@ -87,12 +87,17 @@ const updatePokemon = (req: Request, res: Response, next: NextFunction): void =>
   pokemonRepository.update(
     req.body,
     req.params.id,
-    () => {
-      res.status(HttpCode.OK).json({
-        status: HttpCode.OK,
-        statusText: "Update",
-        message: "pokemon updated",
-      });
+    (data) => {
+      if (data) {
+        res.status(HttpCode.OK).json({
+          status: HttpCode.OK,
+          statusText: "Update",
+          message: "pokemon updated",
+          data,
+        });
+      } else {
+        res.status(HttpCode.BAD_REQUEST).json({});
+      }
     },
     (err) => next(err)
   );
