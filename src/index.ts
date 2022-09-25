@@ -17,6 +17,7 @@ router.get("/pokemon/search", pokemonController.searchPokemon);
 router.get("/pokemon/:id", pokemonController.getPokemonById);
 router.post("/pokemon", pokemonController.addPokemon);
 router.put("/pokemon/:id", pokemonController.updatePokemon);
+router.delete("/pokemon/:id", pokemonController.deletePokemon);
 
 app.use("/api/", router);
 

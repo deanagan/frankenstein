@@ -2,6 +2,7 @@ type PokemonDataType = {
   uniqueId: string;
   name: string;
   trainer: string;
+  isDeleted: boolean;
 };
 
 type PokemonDataSearchType = {

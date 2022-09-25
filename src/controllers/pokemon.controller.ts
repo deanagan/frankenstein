@@ -10,6 +10,7 @@ const getPokemon = (req: Request, res: Response, next: NextFunction): void => {
         status: HttpCode.OK,
         statusText: "OK",
         message: "all pokemon",
+        count: (data as PokemonDataType[]).length,
         data,
       });
     },
@@ -33,6 +34,7 @@ const searchPokemon = (req: Request, res: Response, next: NextFunction): void =>
           status: HttpCode.OK,
           statusText: "OK",
           message: "get pokemon by searching",
+          count: (data as PokemonDataType[]).length,
           data,
         });
       } else {
@@ -85,12 +87,26 @@ const updatePokemon = (req: Request, res: Response, next: NextFunction): void =>
   pokemonRepository.update(
     req.body,
     req.params.id,
+    () => {
+      res.status(HttpCode.OK).json({
+        status: HttpCode.OK,
+        statusText: "Update",
+        message: "pokemon updated",
+      });
+    },
+    (err) => next(err)
+  );
+};
+
+const deletePokemon = (req: Request, res: Response, next: NextFunction): void => {
+  pokemonRepository.delete(
+    req.params.id,
     (data) => {
       if (data) {
         res.status(HttpCode.OK).json({
           status: HttpCode.OK,
-          statusText: "Update",
-          message: "pokemon updated",
+          statusText: "Delete",
+          message: "pokemon deleted",
           data,
         });
       } else {
@@ -101,4 +117,4 @@ const updatePokemon = (req: Request, res: Response, next: NextFunction): void =>
   );
 };
 
-export { getPokemon, searchPokemon, getPokemonById, addPokemon, updatePokemon };
+export { getPokemon, searchPokemon, getPokemonById, addPokemon, updatePokemon, deletePokemon };

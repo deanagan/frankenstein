@@ -11,7 +11,8 @@ const pokemonRepository = {
       if (err) {
         reject(err);
       } else {
-        resolve(JSON.parse(data.toString()));
+        const result = JSON.parse(data.toString()).filter((pokemon: PokemonDataType) => !pokemon.isDeleted);
+        resolve(result);
       }
     });
   },
@@ -20,7 +21,7 @@ const pokemonRepository = {
       if (err) {
         reject(err);
       } else {
-        resolve(JSON.parse(data.toString()).find((pe: PokemonDataType) => pe.uniqueId === id));
+        resolve(JSON.parse(data.toString()).find((pe: PokemonDataType) => pe.uniqueId === id && !pe.isDeleted));
       }
     });
   },
@@ -31,9 +32,10 @@ const pokemonRepository = {
       } else {
         const filteredData = JSON.parse(data.toString()).filter(
           (pe: PokemonDataType) =>
-            (searchObject.uniqueId && pe.uniqueId.toLowerCase() === searchObject.uniqueId.toLowerCase()) ||
-            (searchObject.name && pe.name.toLowerCase().indexOf(searchObject.name.toLowerCase()) >= 0) ||
-            (searchObject.trainer && pe.trainer.toLowerCase().indexOf(searchObject.trainer.toLowerCase()) >= 0)
+            !pe.isDeleted &&
+            ((searchObject.uniqueId && pe.uniqueId.toLowerCase() === searchObject.uniqueId.toLowerCase()) ||
+              (searchObject.name && pe.name.toLowerCase().indexOf(searchObject.name.toLowerCase()) >= 0) ||
+              (searchObject.trainer && pe.trainer.toLowerCase().indexOf(searchObject.trainer.toLowerCase()) >= 0))
         );
         resolve(filteredData);
       }
@@ -45,9 +47,9 @@ const pokemonRepository = {
         reject(err);
       } else {
         const currentPokemonList = JSON.parse(data.toString());
-        const pokemonUniqueId = { uniqueId: uuidv4() };
-        const pokemon = { ...pokemonUniqueId, ...newPokemon };
-        currentPokemonList.push(pokemon);
+        const newPokemonUniqueId = { uniqueId: uuidv4() };
+        const pokemon = { ...newPokemonUniqueId, ...newPokemon };
+        currentPokemonList.push({ ...pokemon, isDeleted: false });
         fs.writeFile(FILENAME, JSON.stringify(currentPokemonList), (err) => {
           if (err) {
             reject(err);
@@ -69,21 +71,15 @@ const pokemonRepository = {
         reject(err);
       } else {
         const currentPokemonList = JSON.parse(data.toString());
-        const pokemonToUpdate = currentPokemonList.find((pokemon: PokemonDataType) => pokemon.uniqueId === uniqueId);
+        const pokemonToUpdate = currentPokemonList.find(
+          (pokemon: PokemonDataType) => pokemon.uniqueId === uniqueId && !pokemon.isDeleted
+        );
 
-        let updatedPokemonList: PokemonDataType[] = [];
+        let updatedPokemonList = currentPokemonList;
         if (pokemonToUpdate) {
           updatedPokemonList = currentPokemonList.map((pokemon: PokemonDataType) =>
             pokemon.uniqueId === uniqueId ? { ...pokemon, ...pokemonUpdate } : pokemon
           );
-        } else {
-          const pokemonUniqueId = { uniqueId };
-          const pokemon = { ...pokemonUniqueId, ...pokemonUpdate };
-
-          if (!Object.prototype.hasOwnProperty.call(pokemon, "trainer")) {
-            pokemon.trainer = "wild - no trainer";
-          }
-          updatedPokemonList = [...currentPokemonList, pokemon];
         }
 
         fs.writeFile(FILENAME, JSON.stringify(updatedPokemonList), (err) => {
@@ -91,7 +87,33 @@ const pokemonRepository = {
             reject(err);
             return;
           }
-          resolve(updatedPokemonList.find((pokemon) => pokemon.uniqueId === uniqueId));
+          resolve({});
+        });
+      }
+    });
+  },
+  delete: (uniqueId: string, resolve: ResolveCallback, reject: RejectCallback): void => {
+    fs.readFile(FILENAME, (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        const currentPokemonList = JSON.parse(data.toString());
+        const pokemonToUpdate = currentPokemonList.find((pokemon: PokemonDataType) => pokemon.uniqueId === uniqueId);
+
+        let updatedPokemonList: PokemonDataType[] = [];
+        if (pokemonToUpdate) {
+          updatedPokemonList = currentPokemonList.map((pokemon: PokemonDataType) =>
+            pokemon.uniqueId === uniqueId ? { ...pokemon, isDeleted: true } : pokemon
+          );
+          pokemonToUpdate.isDeleted = true;
+        }
+
+        fs.writeFile(FILENAME, JSON.stringify(updatedPokemonList), (err) => {
+          if (err) {
+            reject(err);
+            return;
+          }
+          resolve(pokemonToUpdate);
         });
       }
     });
