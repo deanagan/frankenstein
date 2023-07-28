@@ -1,8 +1,8 @@
 const products = [
   {
     id: 1,
-    name: "Product 1",
-    description: "Description for Product 1",
+    name: "Larry Johnson",
+    description: "Obsidian Auto",
     price: 19.99,
     image: "images/product-image-1.jpg",
   },
