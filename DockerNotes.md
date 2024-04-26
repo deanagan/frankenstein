@@ -2,16 +2,16 @@
 
 
 ## Docker build
-docker build --pull -t card-collection .
+docker build --pull -t seed-collection .
 
 ## Docker run
-docker run -p 8081:8081 -d --name card-collection card-collection
+docker run -p 8081:8081 -d --name seed-collection seed-collection
 
 
 ## Using postman, we can access the API at 8081
 
 # Docker stop
-docker stop card-collection
+docker stop seed-collection
 
 # Docker check container in use
 docker ps -a
@@ -20,8 +20,8 @@ docker ps -a
 docker rm [CONTAINER ID]
 
 # Docker commit
-docker commit -m "Add comment here" -a "[full name]" card-collection [docker hub username]/card-collection:latest
+docker commit -m "Add comment here" -a "[full name]" seed-collection [docker hub username]/seed-collection:latest
 
 # Docker login and push committed image
 docker login
-docker push [docker hub username]/card-collection:latest
+docker push [docker hub username]/seed-collection:latest
