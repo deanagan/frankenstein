@@ -5,6 +5,7 @@ import products from "./products";
 
 import { setName } from "./appActions"
 import { useDispatch } from "react-redux";
+import { useLocalStorageState } from "./hooks/localStorage";
 
 type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 
@@ -13,10 +14,12 @@ function App() {
   const [value, setValue] = useState<string>('');
   const dispatch = useDispatch();
 
+  const [localStorageName, setLocalStorageName] = useLocalStorageState("name", "No Name");
+
   // Function to handle input change
   const handleChange = (event: InputChangeEvent) => {
     setValue(event.target.value);
-    
+    setLocalStorageName(event.target.value);
   }
 
   return (
@@ -31,7 +34,7 @@ function App() {
       </div>
 
       <div>
-        <label htmlFor="name-text">Name:</label>
+        <label htmlFor="name-text">Name: {localStorageName}</label>
         <input id="name-text" type="text" onChange={handleChange}/>
      
         <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={() =>  dispatch(setName(value))}>
