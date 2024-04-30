@@ -135,3 +135,6 @@ To debug with debug logging on in windows, use `npm run windev`. This allows for
 For Mac and *nix systems, use `npm run macdev`. Mac and *nix systems, we use `DEBUG=app nodemon`
 
 If you want to **enable all debug logs (including express)**, set `DEBUG=*`
+
+24. To Run eslint:
+`npx eslint --ext .ts,.tsx src`

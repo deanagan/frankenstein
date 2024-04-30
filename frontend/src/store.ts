@@ -1,14 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import reducer from "./appReducer";
+import appReducer from "./appReducer";
 
 const rootReducer = combineReducers({
-  main: reducer,
+  main: appReducer,
 });
 
 const store = configureStore({
-  reducer: {
-    appState: rootReducer,
-  },
+  reducer: rootReducer,
 });
 
 export default store;
