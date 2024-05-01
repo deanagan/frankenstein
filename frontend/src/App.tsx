@@ -2,6 +2,7 @@
 import React from "react";
 import ProductCard from "./components/ProductCard";
 import products from "./products";
+import './App.css';
 
 
 // type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
@@ -9,50 +10,20 @@ const video_address =
   "https://github.com/deanagan/seed-collection/raw/main/frontend/public/videos/sample_video.mp4";
 
 function VideoWithMultipleLinks() {
-  // TODO: Move out to CSS files. Just for testing now.
   return (
-    <div style={{ position: "relative", display: "flex" }}>
+    <div className="video-multi-link">
       <a
+        className="hover-link hover-link-red"
         href="https://www.theseedcollection.com.au/Garden-&-Flower-Scissors"
-        style={{
-          position: "absolute",
-          top: "70%",
-          left: "20%",
-          zIndex: 10,
-          display: "inline-block",
-          width: "20px",
-          height: "20px",
-          backgroundColor: "red",
-          borderRadius: "50%",
-        }}
-        title="Garden & Flower Scissors (RYSET)"
+        title="Click to Buy - Garden & Flower Scissors (RYSET)"
       ></a>
       <a
+        className="hover-link hover-link-green"
         href="https://www.theseedcollection.com.au/microgreen-seeds-kale-red-russian-p"
-        style={{
-          position: "absolute",
-          top: "80%",
-          left: "90%",
-          zIndex: 10,
-          display: "inline-block",
-          width: "20px",
-          height: "20px",
-          backgroundColor: "green",
-          borderRadius: "50%",
-        }}
-        title="Microgreen Seeds- Kale Red Russian"
+        title="Click to buy - Microgreen Seeds- Kale Red Russian"
       ></a>
-
       <video
-        width={900}
-        height="50%"
         controls
-        style={{
-          display: "flex",
-          alignItems: "stretch",
-          justifyContent: "center",
-          width: "100%",
-        }}
         autoPlay
         muted
         loop
