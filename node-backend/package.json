@@ -2,12 +2,22 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "tsc-watch --onSuccess \"nodemon --ext js --watch dist dist/index.js\""
   },
   "keywords": [],
   "author": "Dean Agan",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "nodemon": "^3.1.0",
+    "tsc-watch": "^6.2.0"
+  }
 }
