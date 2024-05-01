@@ -1,13 +1,10 @@
 // src/App.tsx
-import React, { useState } from "react";
+import React from "react";
 import ProductCard from "./components/ProductCard";
 import products from "./products";
 
-import { setName } from "./appActions";
-import { useDispatch } from "react-redux";
-import { useLocalStorageState } from "./hooks/localStorage";
 
-type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
+// type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 const video_address =
   "https://github.com/deanagan/seed-collection/raw/main/frontend/public/videos/sample_video.mp4";
 
