@@ -16,8 +16,8 @@ function VideoWithMultipleLinks() {
         href="https://www.theseedcollection.com.au/Garden-&-Flower-Scissors"
         style={{
           position: "absolute",
-          top: 510,
-          left: 120,
+          top: "70%",
+          left: "20%",
           zIndex: 10,
           display: "inline-block",
           width: "20px",
@@ -31,8 +31,8 @@ function VideoWithMultipleLinks() {
         href="https://www.theseedcollection.com.au/microgreen-seeds-kale-red-russian-p"
         style={{
           position: "absolute",
-          top: 710,
-          left: 1210,
+          top: "80%",
+          left: "90%",
           zIndex: 10,
           display: "inline-block",
           width: "20px",
