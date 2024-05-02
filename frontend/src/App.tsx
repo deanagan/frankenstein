@@ -1,9 +1,11 @@
 // src/App.tsx
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductCard from "./components/ProductCard";
-import products from "./products";
-import './App.css';
-
+import "./App.css";
+import { Product } from "./models/Product";
+import * as Api from "./api";
+import { AxiosResponse } from "axios";
+import { dummyProducts } from "./dummyProducts";
 
 // type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 const video_address =
@@ -22,12 +24,7 @@ function VideoWithMultipleLinks() {
         href="https://www.theseedcollection.com.au/microgreen-seeds-kale-red-russian-p"
         title="Click to buy - Microgreen Seeds- Kale Red Russian"
       ></a>
-      <video
-        controls
-        autoPlay
-        muted
-        loop
-      >
+      <video controls autoPlay muted loop>
         <source src={video_address} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -49,6 +46,18 @@ function App() {
   //   setValue(event.target.value);
   //   setLocalStorageName(event.target.value);
   // };
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    Api.getProducts().then((response: AxiosResponse<Product[]>) => {
+      const productsRetrieved: Product[] = response.data;
+      setProducts(productsRetrieved);
+      console.log(productsRetrieved);
+    }).catch(() => {
+      // No backend, let's call dummy for now
+      setProducts(dummyProducts);
+    });
+  }, []);
 
   return (
     <div>

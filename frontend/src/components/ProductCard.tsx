@@ -1,9 +1,9 @@
 import React from "react";
 
 interface Product {
-  id: number;
+  id: string;
   name: string;
-  description: string;
+  description?: string;
   price: number;
   image: string;
 }
