@@ -1,14 +1,13 @@
 import * as ActionTypes from "./actionTypes";
 import { initialAppState } from "./appConstants";
 
-interface SetNameType {
+interface AppReducerType {
   type: string;
   name: string;
+  age: number;
 }
 
-type AppReducerActionType = SetNameType;
-
-const appReducer = (state = initialAppState, action: AppReducerActionType) => {
+const appReducer = (state = initialAppState, action: AppReducerType) => {
   switch (action.type) {
     case ActionTypes.SET_NAME:
       return { ...state, name: action.name };

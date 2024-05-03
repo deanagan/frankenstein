@@ -1,13 +1,18 @@
 // src/App.tsx
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import ProductCard from "./components/ProductCard";
 import "./App.css";
 import { Product } from "./models/Product";
 import * as Api from "./api";
 import { AxiosResponse } from "axios";
 import { dummyProducts } from "./dummyProducts";
+import { CostCard } from "./components/CostCard";
+import { useDispatch } from "react-redux";
+import { useLocalStorageState } from "./hooks/localStorage";
+import { setName } from "./appActions";
+import { useMemoObjCompare } from "./hooks/memoObjCompare";
 
-// type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
+type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 const video_address =
   "https://github.com/deanagan/seed-collection/raw/main/frontend/public/videos/sample_video.mp4";
 
@@ -24,7 +29,7 @@ function VideoWithMultipleLinks() {
         href="https://www.theseedcollection.com.au/microgreen-seeds-kale-red-russian-p"
         title="Click to buy - Microgreen Seeds- Kale Red Russian"
       ></a>
-      <video controls autoPlay muted loop>
+      <video width="920" height="240" controls autoPlay muted loop>
         <source src={video_address} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
@@ -33,30 +38,33 @@ function VideoWithMultipleLinks() {
 }
 
 function App() {
-  // const [value, setValue] = useState<string>("");
-  // const dispatch = useDispatch();
+  const [value, setValue] = useState<string>("");
+  const dispatch = useDispatch();
 
-  // const [localStorageName, setLocalStorageName] = useLocalStorageState(
-  //   "name",
-  //   "No Name"
-  // );
+  const [localStorageName, setLocalStorageName] = useLocalStorageState(
+    "name",
+    "No Name",
+  );
 
-  // // Function to handle input change
-  // const handleChange = (event: InputChangeEvent) => {
-  //   setValue(event.target.value);
-  //   setLocalStorageName(event.target.value);
-  // };
+  // Function to handle input change
+  const handleChange = (event: InputChangeEvent) => {
+    setValue(event.target.value);
+    setLocalStorageName(event.target.value);
+  };
   const [products, setProducts] = useState<Product[]>([]);
+  const topProduct = products[0];
 
   useEffect(() => {
-    Api.getProducts().then((response: AxiosResponse<Product[]>) => {
-      const productsRetrieved: Product[] = response.data;
-      setProducts(productsRetrieved);
-      console.log(productsRetrieved);
-    }).catch(() => {
-      // No backend, let's call dummy for now
-      setProducts(dummyProducts);
-    });
+    Api.getProducts()
+      .then((response: AxiosResponse<Product[]>) => {
+        const productsRetrieved: Product[] = response.data;
+        setProducts(productsRetrieved);
+        console.log(productsRetrieved);
+      })
+      .catch(() => {
+        // No backend, let's call dummy for now
+        setProducts(dummyProducts);
+      });
   }, []);
 
   return (
@@ -79,7 +87,14 @@ function App() {
         </div>
       </div>
 
-      {/* <div>
+      {topProduct ? (
+        <React.Fragment>
+          <CostCard pickedFields={topProduct} />
+          {/* <CostCard price={topProduct.price} name={topProduct.name} /> */}
+        </React.Fragment>
+      ) : null}
+
+      <div>
         <label htmlFor="name-text">Name: {localStorageName}</label>
         <input id="name-text" type="text" onChange={handleChange} />
 
@@ -89,7 +104,7 @@ function App() {
         >
           Set Name
         </button>
-      </div> */}
+      </div>
     </div>
   );
 }
