@@ -1,11 +1,6 @@
 // src/App.tsx
-import React, {
-  // Fragment,
-  useEffect,
-  // useMemo,
-  useRef,
-  useState,
-} from "react";
+
+import React, { Reducer, useRef, useEffect, useReducer, useState } from "react";
 import ProductCard from "./components/ProductCard";
 import "./App.css";
 import { Product } from "./models/Product";
@@ -13,10 +8,12 @@ import * as Api from "./api";
 import { AxiosResponse } from "axios";
 import { dummyProducts } from "./dummyProducts";
 import { CostCard } from "./components/CostCard";
+
+// import { useMemoObjCompare } from "./hooks/memoObjCompare";
+import { Action } from "redux";
 import { useDispatch } from "react-redux";
 import { useLocalStorageState } from "./hooks/localStorage";
 import { setName } from "./appActions";
-// import { useMemoObjCompare } from "./hooks/memoObjCompare";
 
 type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 const video_address =
@@ -94,13 +91,23 @@ const VideoWithMultipleLinks: React.FC<VideoWithMultipleLinksProps> = ({
   );
 };
 
+interface Profile {
+  name: string;
+  age: number;
+  address: string;
+}
+
+interface ActionType {
+  type: string;
+  profile: Partial<Profile>;
+}
 function App() {
   const [value, setValue] = useState<string>("");
   const dispatch = useDispatch();
 
   const [localStorageName, setLocalStorageName] = useLocalStorageState(
     "name",
-    "No Name",
+    "No Name"
   );
 
   // Function to handle input change
@@ -110,6 +117,24 @@ function App() {
   };
   const [products, setProducts] = useState<Product[]>([]);
   const topProduct = products[0];
+  const [profileState, setProfileState] = useReducer<
+    Reducer<Partial<Profile>, ActionType>
+  >(
+    (state: Partial<Profile>, action: ActionType) => {
+      switch (action.type) {
+        case "SET_AGE":
+          return { ...state, age: action.profile.age };
+        case "SET_NAME":
+          return { ...state, name: action.profile.name };
+        case "SET_ADDRESS":
+          return { ...state, name: action.profile.address };
+
+        default:
+          return state;
+      }
+    },
+    { name: "", age: 0, address: "" }
+  );
 
   useEffect(() => {
     Api.getProducts()
@@ -117,10 +142,20 @@ function App() {
         const productsRetrieved: Product[] = response.data;
         setProducts(productsRetrieved);
         console.log(productsRetrieved);
+        const newValue: ActionType = {
+          type: "SET_NAME",
+          profile: { name: "Josh" },
+        };
+        setProfileState(newValue);
       })
       .catch(() => {
         // No backend, let's call dummy for now
         setProducts(dummyProducts);
+        const newValue: ActionType = {
+          type: "SET_NAME",
+          profile: { name: "Josh" },
+        };
+        setProfileState(newValue);
       });
   }, []);
 
@@ -128,7 +163,8 @@ function App() {
     <div>
       <div className="container mx-auto py-8">
         <h1 className="text-2xl font-bold mb-4">
-          Welcome to the Seed Collection!
+          Welcome to the Seed Collection, {profileState.name} {profileState.age}
+          !
         </h1>
         <h2>
           At the Seed Collection, we bring you a unique and immersive shopping
