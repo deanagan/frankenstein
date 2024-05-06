@@ -1,0 +1,11 @@
+@seedcollection_HostAddress = http://localhost:5005
+
+GET {{seedcollection_HostAddress}}/api/productapi/products
+Accept: application/json
+
+###
+
+GET {{seedcollection_HostAddress}}/api/productapi/products/b530400d-3fde-4b20-be53-09e01bc82358
+Accept: application/json
+
+###
