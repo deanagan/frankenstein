@@ -1,5 +1,11 @@
 // src/App.tsx
-import React, { useEffect, useMemo, useState } from "react";
+import React, {
+  // Fragment,
+  useEffect,
+  // useMemo,
+  useRef,
+  useState,
+} from "react";
 import ProductCard from "./components/ProductCard";
 import "./App.css";
 import { Product } from "./models/Product";
@@ -10,32 +16,83 @@ import { CostCard } from "./components/CostCard";
 import { useDispatch } from "react-redux";
 import { useLocalStorageState } from "./hooks/localStorage";
 import { setName } from "./appActions";
-import { useMemoObjCompare } from "./hooks/memoObjCompare";
+// import { useMemoObjCompare } from "./hooks/memoObjCompare";
 
 type InputChangeEvent = React.ChangeEvent<HTMLInputElement>;
 const video_address =
   "https://github.com/deanagan/seed-collection/raw/main/frontend/public/videos/sample_video.mp4";
 
-function VideoWithMultipleLinks() {
+interface VideoWithMultipleLinksProps {
+  showLinkFn: VoidFunction;
+}
+
+const VideoWithMultipleLinks: React.FC<VideoWithMultipleLinksProps> = ({
+  showLinkFn,
+}) => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [showRedLinks, setShowRedLinks] = useState<boolean>(false);
+  const [showGreenLinks, setShowGreenLinks] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleTimeUpdate = (event: Event) => {
+      const currentTime = (event.target as HTMLVideoElement).currentTime;
+
+      // Time is in seconds. We want to call action at 5
+      if (currentTime >= 5) {
+        showLinkFn();
+        setShowGreenLinks(true);
+      }
+
+      // Time is in seconds. We want to call action at 5
+      if (currentTime >= 12) {
+        showLinkFn();
+        setShowRedLinks(true);
+      }
+    };
+    const currentVideoRef = videoRef.current;
+    if (currentVideoRef) {
+      currentVideoRef.addEventListener("timeupdate", handleTimeUpdate);
+    }
+
+    return () => {
+      if (currentVideoRef) {
+        currentVideoRef.removeEventListener("timeupdate", handleTimeUpdate);
+      }
+    };
+  }, [showLinkFn]);
+
   return (
     <div className="video-multi-link">
-      <a
-        className="hover-link hover-link-red"
-        href="https://www.theseedcollection.com.au/Garden-&-Flower-Scissors"
-        title="Click to Buy - Garden & Flower Scissors (RYSET)"
-      ></a>
-      <a
-        className="hover-link hover-link-green"
-        href="https://www.theseedcollection.com.au/microgreen-seeds-kale-red-russian-p"
-        title="Click to buy - Microgreen Seeds- Kale Red Russian"
-      ></a>
-      <video width="920" height="240" controls autoPlay muted loop>
+      {showRedLinks ? (
+        <a
+          className="hover-link hover-link-red"
+          href="https://www.theseedcollection.com.au/Garden-&-Flower-Scissors"
+          title="Click to Buy - Garden & Flower Scissors (RYSET)"
+        ></a>
+      ) : null}
+      {showGreenLinks ? (
+        <a
+          className="hover-link hover-link-green"
+          href="https://www.theseedcollection.com.au/microgreen-seeds-kale-red-russian-p"
+          title="Click to buy - Microgreen Seeds- Kale Red Russian"
+        ></a>
+      ) : null}
+
+      <video
+        ref={videoRef}
+        width="920"
+        height="240"
+        controls
+        autoPlay
+        muted
+        loop
+      >
         <source src={video_address} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
     </div>
   );
-}
+};
 
 function App() {
   const [value, setValue] = useState<string>("");
@@ -79,7 +136,9 @@ function App() {
           products showcased in captivating videos, where every frame is an
           opportunity to discover something extraordinary.
         </h2>
-        <VideoWithMultipleLinks />
+        <VideoWithMultipleLinks
+          showLinkFn={() => console.log("Showing link function now")}
+        />
         <div className="sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
