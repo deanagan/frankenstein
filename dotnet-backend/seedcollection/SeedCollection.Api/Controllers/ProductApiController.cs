@@ -1,16 +1,18 @@
-using System.Xml;
 using Microsoft.AspNetCore.Mvc;
+using SeedCollection.Interfaces;
 using SeedCollection.Models;
 
-namespace MyApp.Namespace
+namespace SeedCollection.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class ProductApiController : ControllerBase
     {
-        public ProductApiController()
-        {
+        private readonly IProductService _productService;
 
+        public ProductApiController(IProductService productService)
+        {
+            _productService = productService;
         }
 
         private readonly List<Product> _products = new List<Product>
@@ -23,13 +25,13 @@ namespace MyApp.Namespace
         [HttpGet("products")]
         public IActionResult GetProducts()
         {
-            return Ok(_products);
+            return Ok(_productService.GetProducts());
         }
 
         [HttpGet("products/{uniqueId}")]
         public IActionResult GetProducts(Guid uniqueId)
         {
-            var product = _products.FirstOrDefault(p => p.UniqueId == uniqueId);
+            var product = _productService.GetProduct(uniqueId);
 
             if (product == null)
             {

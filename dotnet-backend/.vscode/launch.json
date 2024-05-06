@@ -9,9 +9,9 @@
       "type": "coreclr",
       "request": "launch",
       "preLaunchTask": "build",
-      "program": "${workspaceFolder}/seedcollection/bin/Debug/net8.0/seedcollection.dll",
+      "program": "${workspaceFolder}/seedcollection/SeedCollection.Api/bin/Debug/net8.0/SeedCollectionApi.dll",
       "args": [],
-      "cwd": "${workspaceFolder}/seedcollection",
+      "cwd": "${workspaceFolder}/seedcollection/SeedCollection.Api",
       "stopAtEntry": false,
       "serverReadyAction": {
         "action": "openExternally",
