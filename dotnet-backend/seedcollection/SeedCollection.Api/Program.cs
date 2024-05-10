@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // DA: Adding this
 builder.Services.AddControllers();
+builder.Services.AddHealthChecks();
 builder.Services.AddScoped<IProductService, ProductService>();
 
 // Add services to the container.
@@ -23,6 +24,7 @@ if (app.Environment.IsDevelopment())
 
 // DA: Add this to the basic generated version
 app.MapControllers();
+app.MapHealthChecks("/health");
 
 app.UseHttpsRedirection();
 
