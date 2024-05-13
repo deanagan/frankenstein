@@ -2,8 +2,10 @@
   "name": "graphql-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/app/index.js",
   "scripts": {
+    "start": "tsc-watch --onSuccess \"nodemon --ext js --watch dist dist/index.js\"",
+    "debug": "nodemon --exec ts-node app/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -17,5 +19,12 @@
     "express": "^4.19.2",
     "graphql": "^16.8.1",
     "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "tsc-watch": "^6.2.0"
   }
 }

@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Debug with nodemon",
+            "runtimeExecutable": "nodemon",
+            "runtimeArgs": ["--exec", "ts-node", "--", "app/index.ts"],
+            "restart": true,      
+            "console": "integratedTerminal"
+        },
+        
+    ]
+}

@@ -1,0 +1,23 @@
+#make a query:
+query ($getPersonId: Int) {
+  #get all of the people available in the server
+  getAllPeople {
+    #procure their IDs and names.
+    id
+    name
+  }
+  getPerson(id: $getPersonId) {
+    id,
+    name
+  }
+}
+
+mutation ($addPersonName: String) {
+  addPerson(name: $addPersonName) {
+    #add a new person with the name
+    #if the execution succeeds, return its 'id' and 'name` to the user.
+    id
+    name
+  }
+}
+
