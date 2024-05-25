@@ -1,26 +1,68 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import {
+  Container,
+  Button,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper,
+} from "@mui/material";
+import AddUserModal from "./AddUserModal";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+interface User {
+  firstName: string;
+  lastName: string;
+  gender: string;
 }
+
+const App: React.FC = () => {
+  const [users, setUsers] = useState<User[]>([]);
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const handleAddUser = (user: User) => {
+    setUsers([...users, user]);
+  };
+
+  return (
+    <Container>
+      <h1>User Management</h1>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => setModalOpen(true)}
+      >
+        Add User
+      </Button>
+      <TableContainer component={Paper} style={{ marginTop: 20 }}>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>First Name</TableCell>
+              <TableCell>Last Name</TableCell>
+              <TableCell>Gender</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {users.map((user, index) => (
+              <TableRow key={index}>
+                <TableCell>{user.firstName}</TableCell>
+                <TableCell>{user.lastName}</TableCell>
+                <TableCell>{user.gender}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <AddUserModal
+        open={modalOpen}
+        onClose={() => setModalOpen(false)}
+        onSave={handleAddUser}
+      />
+    </Container>
+  );
+};
 
 export default App;
