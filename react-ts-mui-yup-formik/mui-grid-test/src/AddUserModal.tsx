@@ -10,6 +10,7 @@ import {
   MenuItem,
   TextField,
 } from "@mui/material";
+import { v4 as uuidv4 } from "uuid";
 
 interface AddUserModalProps {
   open: boolean;
@@ -18,6 +19,7 @@ interface AddUserModalProps {
 }
 
 interface UserFormValues {
+  id: string;
   firstName: string;
   lastName: string;
   gender: string;
@@ -29,6 +31,7 @@ const AddUserModal: React.FC<AddUserModalProps> = ({
   onSave,
 }) => {
   const initialValues: UserFormValues = {
+    id: uuidv4(),
     firstName: "",
     lastName: "",
     gender: "",

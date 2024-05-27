@@ -13,6 +13,7 @@ import {
 import AddUserModal from "./AddUserModal";
 
 interface User {
+  id: string;
   firstName: string;
   lastName: string;
   gender: string;
@@ -23,7 +24,7 @@ const App: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   const handleAddUser = (user: User) => {
-    setUsers([...users, user]);
+    setUsers([...users, { ...user }]);
   };
 
   return (
@@ -46,8 +47,8 @@ const App: React.FC = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map((user, index) => (
-              <TableRow key={index}>
+            {users.map((user) => (
+              <TableRow key={user.id}>
                 <TableCell>{user.firstName}</TableCell>
                 <TableCell>{user.lastName}</TableCell>
                 <TableCell>{user.gender}</TableCell>
