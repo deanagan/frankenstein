@@ -20,7 +20,7 @@ This repository contains a variety of architectural examples. Each example is in
 To get started with the examples in this repository, clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/your-username/architecture-examples.git
+git clone https://github.com/deanagan/architecture-examples.git
 cd architecture-examples
 ```
 
