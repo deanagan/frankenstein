@@ -1,1 +1,7 @@
-seed-inventory/node_modules
+container/node_modules
+microfrontend1/node_modules
+microfrontend2/node_modules
+
+container/dist
+microfrontend1/dist
+microfrontend2/dist
