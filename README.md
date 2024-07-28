@@ -50,6 +50,13 @@ Below is a list of the architectural examples included in this repository:
    - Description: Example of Command Query Responsibility Segregation (CQRS) combined with Event Sourcing.
    - Location: `cqrs-event-sourcing/`
 
+6. **Modular Monolith**
+## Target Stacks
+- C#
+- Node
+- Python
+- C++
+- Dart / Flutter
 ## Contributing
 
 We welcome contributions! If you have an example you'd like to add or an improvement to an existing example, please fork the repository and submit a pull request.
@@ -73,4 +80,6 @@ For any questions or feedback, feel free to open an issue or contact me at [your
 ---
 
 Feel free to reach out if you have any questions or suggestions. Happy coding!
+
+
 
