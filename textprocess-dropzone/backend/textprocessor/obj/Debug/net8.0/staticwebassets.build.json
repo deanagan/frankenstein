@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "ie3fm6upCeV6aWgAYNj2lBIUDU1A6Md6CD2AzcP8mqQ=",
+  "Source": "text-processor",
+  "BasePath": "_content/text-processor",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
