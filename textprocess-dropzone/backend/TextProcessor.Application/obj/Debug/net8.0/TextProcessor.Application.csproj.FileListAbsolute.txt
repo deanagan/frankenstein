@@ -1,12 +1,12 @@
+C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\bin\Debug\net8.0\TextProcessor.Application.deps.json
+C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\bin\Debug\net8.0\TextProcessor.Application.dll
+C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\bin\Debug\net8.0\TextProcessor.Application.pdb
 C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\obj\Debug\net8.0\TextProcessor.Application.csproj.AssemblyReference.cache
 C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\obj\Debug\net8.0\TextProcessor.Application.GeneratedMSBuildEditorConfig.editorconfig
 C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\obj\Debug\net8.0\TextProcessor.Application.AssemblyInfoInputs.cache
 C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\obj\Debug\net8.0\TextProcessor.Application.AssemblyInfo.cs
 C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\obj\Debug\net8.0\TextProcessor.Application.csproj.CoreCompileInputs.cache
 C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\obj\Debug\net8.0\TextProcessor.Application.sourcelink.json
-C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\bin\Debug\net8.0\TextProcessor.Application.deps.json
-C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\bin\Debug\net8.0\TextProcessor.Application.dll
-C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\bin\Debug\net8.0\TextProcessor.Application.pdb
 C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\obj\Debug\net8.0\TextProcessor.Application.dll
 C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\obj\Debug\net8.0\refint\TextProcessor.Application.dll
 C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.Application\obj\Debug\net8.0\TextProcessor.Application.pdb

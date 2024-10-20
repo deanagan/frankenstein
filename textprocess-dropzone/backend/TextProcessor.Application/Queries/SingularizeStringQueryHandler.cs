@@ -1,9 +1,9 @@
-using MediatR;
+namespace TextProcessor.Application.Queries;
+
 using System.Threading;
 using System.Threading.Tasks;
 
-
-namespace TextProcessor.Application.Queries;
+using MediatR;
 
 public class SingularizeStringQueryHandler : IRequestHandler<SingularizeStringQuery, string>
 {

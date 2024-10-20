@@ -1,3 +1,5 @@
+namespace TextProcessor.API.Controllers;
+
 using System.IO;
 using System.Threading.Tasks;
 
@@ -6,8 +8,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 using TextProcessor.Application.Queries;
-
-namespace MyApiProject.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
@@ -23,14 +23,15 @@ public class TextProcessorController : ControllerBase
     // POST api/upload
     [HttpPost]
     [Route("singularize")]
-    public async Task<IActionResult> Singularize(string input)
+    public async Task<IActionResult> Singularize(string content)
     {
-        if (string.IsNullOrEmpty(input))
+        if (string.IsNullOrEmpty(content))
+        {
             return BadRequest("No input.");
+        }
 
-        var result = await _mediator.Send(new SingularizeCommand(content));
+        var result = await _mediator.Send(new SingularizeStringQuery(content));
 
         return Ok(result);
     }
 }
-

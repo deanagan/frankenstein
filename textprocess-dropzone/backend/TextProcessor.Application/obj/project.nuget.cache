@@ -1,13 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "f9J+9yqlOgysUBkrvj/yN2Y1U6C5KcNs/LytaoSehMefaQoBK68OHm9RFI3+L6O/wJu9QN4bdtUDTbdBMMOVKQ==",
+  "dgSpecHash": "WVbjF6gNDOPgrNX4NExckBpYn82fhBSo8vTDTPJoYIrVs8SCDMFOn1cDhjbD0CIZu+TqsIslBi5WjyfroWpA3g==",
   "success": true,
   "projectFilePath": "C:\\Workspace\\frankenstein\\textprocess-dropzone\\backend\\TextProcessor.Application\\TextProcessor.Application.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\agand\\.nuget\\packages\\mediatr\\11.0.0\\mediatr.11.0.0.nupkg.sha512",
-    "C:\\Users\\agand\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",
-    "C:\\Users\\agand\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\11.1.0\\mediatr.extensions.microsoft.dependencyinjection.11.1.0.nupkg.sha512",
-    "C:\\Users\\agand\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\7.0.0\\microsoft.extensions.dependencyinjection.abstractions.7.0.0.nupkg.sha512"
+    "C:\\Users\\agand\\.nuget\\packages\\mediatr\\12.4.1\\mediatr.12.4.1.nupkg.sha512",
+    "C:\\Users\\agand\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\agand\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\agand\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.556\\stylecop.analyzers.1.2.0-beta.556.nupkg.sha512",
+    "C:\\Users\\agand\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.556\\stylecop.analyzers.unstable.1.2.0.556.nupkg.sha512"
   ],
   "logs": []
 }
