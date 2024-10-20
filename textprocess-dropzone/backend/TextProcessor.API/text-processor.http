@@ -1,0 +1,10 @@
+@textprocessor_dropzone_HostAddress = http://localhost:5054
+
+
+POST {{textprocessor_dropzone_HostAddress}}/textprocessor/
+Content-Type: application/json
+
+{
+    "Test": "Test Values"
+}
+

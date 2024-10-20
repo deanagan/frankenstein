@@ -1,0 +1,8 @@
+C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.API\obj\Debug\net8.0\TextProcessor.API.csproj.AssemblyReference.cache
+C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.API\obj\Debug\net8.0\TextProcessor.API.GeneratedMSBuildEditorConfig.editorconfig
+C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.API\obj\Debug\net8.0\TextProcessor.API.AssemblyInfoInputs.cache
+C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.API\obj\Debug\net8.0\TextProcessor.API.AssemblyInfo.cs
+C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.API\obj\Debug\net8.0\TextProcessor.API.csproj.CoreCompileInputs.cache
+C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.API\obj\Debug\net8.0\TextProcessor.API.MvcApplicationPartsAssemblyInfo.cs
+C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.API\obj\Debug\net8.0\TextProcessor.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Workspace\frankenstein\textprocess-dropzone\backend\TextProcessor.API\obj\Debug\net8.0\TextProcessor.API.sourcelink.json

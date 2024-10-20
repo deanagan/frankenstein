@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "X13qdL7KqFyqgLmBlwhGjD3hW+QCUCF+ihdYf8BKlQj7VJWWJP8XZFWVIUWKjVgw+NZDAbZcObmP3mKJSBczkQ==",
+  "dgSpecHash": "NiJ/4h5rD6spyM61skk0MKtsdTQylWy5rAftvqYWYFO6DFPbm+uFoiHu+GOHRfHHuHhM9foiJg3hbWspuCO9vg==",
   "success": true,
-  "projectFilePath": "C:\\Workspace\\frankenstein\\textprocess-dropzone\\backend\\textprocessor\\text-processor.csproj",
+  "projectFilePath": "C:\\Workspace\\frankenstein\\textprocess-dropzone\\backend\\TextProcessor.API\\TextProcessor.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\agand\\.nuget\\packages\\mediatr\\12.4.1\\mediatr.12.4.1.nupkg.sha512",
     "C:\\Users\\agand\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",

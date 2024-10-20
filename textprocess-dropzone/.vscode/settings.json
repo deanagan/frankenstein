@@ -1,0 +1,14 @@
+{
+    "cSpell.words": [
+        "CQRS",
+        "dropzone",
+        "Mediat",
+        "textprocessor"
+    ],
+    "files.autoSave": "afterDelay",
+    "csharp.format.enable": true,
+    "editor.formatOnSave": true,
+    "[csharp]": {
+        "editor.defaultFormatter": "ms-dotnettools.csharp"
+      }
+}

@@ -169,6 +169,19 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "TextProcessor.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "MediatR.Extensions.Microsoft.DependencyInjection": "11.1.0"
+        },
+        "compile": {
+          "bin/placeholder/TextProcessor.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/TextProcessor.Application.dll": {}
+        }
       }
     }
   },
@@ -636,6 +649,11 @@
         "swashbuckle.aspnetcore.swaggerui.6.6.2.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "TextProcessor.Application/1.0.0": {
+      "type": "project",
+      "path": "../TextProcessor.Application/TextProcessor.Application.csproj",
+      "msbuildProject": "../TextProcessor.Application/TextProcessor.Application.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -644,7 +662,8 @@
       "MediatR.Extensions.Microsoft.DependencyInjection >= 11.1.0",
       "Microsoft.AspNetCore.OpenApi >= 8.0.10",
       "StyleCop.Analyzers >= 1.1.118",
-      "Swashbuckle.AspNetCore >= 6.6.2"
+      "Swashbuckle.AspNetCore >= 6.6.2",
+      "TextProcessor.Application >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -654,11 +673,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Workspace\\frankenstein\\textprocess-dropzone\\backend\\textprocessor\\text-processor.csproj",
-      "projectName": "text-processor",
-      "projectPath": "C:\\Workspace\\frankenstein\\textprocess-dropzone\\backend\\textprocessor\\text-processor.csproj",
+      "projectUniqueName": "C:\\Workspace\\frankenstein\\textprocess-dropzone\\backend\\TextProcessor.API\\TextProcessor.API.csproj",
+      "projectName": "TextProcessor.API",
+      "projectPath": "C:\\Workspace\\frankenstein\\textprocess-dropzone\\backend\\TextProcessor.API\\TextProcessor.API.csproj",
       "packagesPath": "C:\\Users\\agand\\.nuget\\packages\\",
-      "outputPath": "C:\\Workspace\\frankenstein\\textprocess-dropzone\\backend\\textprocessor\\obj\\",
+      "outputPath": "C:\\Workspace\\frankenstein\\textprocess-dropzone\\backend\\TextProcessor.API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -678,7 +697,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Workspace\\frankenstein\\textprocess-dropzone\\backend\\TextProcessor.Application\\TextProcessor.Application.csproj": {
+              "projectPath": "C:\\Workspace\\frankenstein\\textprocess-dropzone\\backend\\TextProcessor.Application\\TextProcessor.Application.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
