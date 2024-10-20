@@ -1,3 +1,5 @@
+using TextProcessor.Application.SingularizeString;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +9,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
 
 // Register MediatR with all handlers in the current assembly
-builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(SingularizeStringQueryHandler).Assembly));
 
 var app = builder.Build();
 
