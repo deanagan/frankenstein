@@ -1,10 +1,11 @@
 @textprocessor_dropzone_HostAddress = http://localhost:5054
 
 
-POST {{textprocessor_dropzone_HostAddress}}/api/textprocessor/singularize/
+POST {{textprocessor_dropzone_HostAddress}}/api/TextProcessor/singularize/
 Content-Type: application/json
 
 {
-    "content": "Test Values"
+    "content": "Values"
 }
 
+###
