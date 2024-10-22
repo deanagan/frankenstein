@@ -1,36 +1,28 @@
 namespace TextProcessor.API.Controllers;
 
-using System.IO;
 using System.Threading.Tasks;
 
 using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
-using TextProcessor.Application.Queries;
+using TextProcessor.API.Models;
+using TextProcessor.Application.SingularizeString;
 
 [Route("api/[controller]")]
 [ApiController]
-public class TextProcessorController : ControllerBase
+public class TextProcessorController(IMediator mediator) : ControllerBase
 {
-    private readonly IMediator _mediator;
+    private readonly IMediator _mediator = mediator;
 
-    public TextProcessorController(IMediator mediator)
-    {
-        _mediator = mediator;
-    }
-
-    // POST api/upload
     [HttpPost]
     [Route("singularize")]
-    public async Task<IActionResult> Singularize(string content)
+    public async Task<IActionResult> Singularize(SingularizeRequest request)
     {
-        if (string.IsNullOrEmpty(content))
+        if (string.IsNullOrEmpty(request.Content))
         {
             return BadRequest("No input.");
         }
 
-        var result = await _mediator.Send(new SingularizeStringQuery(content));
+        var result = await _mediator.Send(new SingularizeStringQuery(request.Content));
 
         return Ok(result);
     }

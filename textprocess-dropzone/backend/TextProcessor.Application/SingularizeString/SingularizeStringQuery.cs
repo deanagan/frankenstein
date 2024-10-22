@@ -1,4 +1,4 @@
-namespace TextProcessor.Application.Queries;
+namespace TextProcessor.Application.SingularizeString;
 
 using MediatR;
 
