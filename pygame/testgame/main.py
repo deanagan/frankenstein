@@ -10,11 +10,11 @@ screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Sprite Animation Example")
 
 # Load the sprite sheet
-sprite_sheet = pygame.image.load("testgame/zoro.png").convert_alpha()
+sprite_sheet = pygame.image.load("testgame/test.png").convert_alpha()
 
 # Define constants for the character
-SPRITE_WIDTH = 128  # Width of each frame in the sheet
-SPRITE_HEIGHT = 128  # Height of each frame
+SPRITE_WIDTH = 384  # Width of each frame in the sheet
+SPRITE_HEIGHT = 512  # Height of each frame
 
 # Function to extract individual frames from the sheet
 def get_frames(sheet, frame_count, y_row=0):
@@ -26,8 +26,8 @@ def get_frames(sheet, frame_count, y_row=0):
     return frames
 
 # Extract frames (e.g., first row with 6 frames of running animation)
-run_frames = get_frames(sprite_sheet, 6, y_row=0)
-duck_frames = get_frames(sprite_sheet, 6, y_row=1)
+run_frames = get_frames(sprite_sheet, 3, y_row=0)
+duck_frames = get_frames(sprite_sheet, 3, y_row=2)
 
 # Set up the clock to control the frame rate
 clock = pygame.time.Clock()
