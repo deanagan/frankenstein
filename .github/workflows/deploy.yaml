@@ -30,5 +30,6 @@ jobs:
 
       - id: build-publish
         uses: bitovi/github-actions-react-to-github-pages@v1.2.4
+        working-directory: nivo-storybook-charting
         with:
           path: nivo-storybook-charting/storybook-static
