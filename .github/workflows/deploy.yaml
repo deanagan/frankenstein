@@ -15,4 +15,4 @@ jobs:
     - id: build-publish
       uses: bitovi/github-actions-react-to-github-pages@v1.2.4
       with:
-        path: frankenstein/nivo-storybook-charting/storybook-static # change to your build folder
+        path: nivo-storybook-charting/storybook-static # change to your build folder
