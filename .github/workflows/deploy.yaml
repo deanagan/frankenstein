@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - "main" # change to the branch you wish to deploy from
+      - "main" # Adjust as needed
 
 permissions:
   contents: read
@@ -12,7 +12,23 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - id: build-publish
-      uses: bitovi/github-actions-react-to-github-pages@v1.2.4
-      with:
-        path: nivo-storybook-charting/storybook-static # change to your build folder
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20' # Adjust to your preferred version
+
+      - name: Install Dependencies
+        run: npm ci
+        working-directory: nivo-storybook-charting
+
+      - name: Build Storybook
+        run: npm run build-storybook
+        working-directory: nivo-storybook-charting
+
+      - id: build-publish
+        uses: bitovi/github-actions-react-to-github-pages@v1.2.4
+        with:
+          path: nivo-storybook-charting/storybook-static
