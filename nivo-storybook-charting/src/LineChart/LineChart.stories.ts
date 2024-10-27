@@ -1,10 +1,12 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import LineChart from './LineChart';
 
 
 
 const sampleData = [
     {
         "id": "japan",
-        "color": "hsl(357, 70%, 50%)",
+        "color": "green", //"hsl(357, 70%, 50%)",
         "data": [
             {
                 "x": "plane",
@@ -58,7 +60,7 @@ const sampleData = [
     },
     {
         "id": "france",
-        "color": "hsl(203, 70%, 50%)",
+        "color": "blue",
         "data": [
             {
                 "x": "plane",
@@ -112,7 +114,7 @@ const sampleData = [
     },
     {
         "id": "us",
-        "color": "hsl(270, 70%, 50%)",
+        "color": "red",
         "data": [
             {
                 "x": "plane",
@@ -166,7 +168,7 @@ const sampleData = [
     },
     {
         "id": "germany",
-        "color": "hsl(45, 70%, 50%)",
+        "color": "orange",
         "data": [
             {
                 "x": "plane",
@@ -220,7 +222,7 @@ const sampleData = [
     },
     {
         "id": "norway",
-        "color": "hsl(238, 70%, 50%)",
+        "color": "purple",
         "data": [
             {
                 "x": "plane",
@@ -272,11 +274,7 @@ const sampleData = [
             }
         ]
     }
-]
-import type { Meta, StoryObj } from '@storybook/react';
-// import { fn } from '@storybook/test';
-
-import LineChart from './LineChart';
+];
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -290,7 +288,19 @@ const meta = {
   tags: ['autodocs'],
   // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
+    data: {
+      control: 'object', // Allows you to input an object for the series data
+      description: 'Array of series data for the line chart',
+    },
+    // colors: {
+    //   control: 'color', // Color picker for colors
+    //   description: 'Color scheme for the chart lines',
+    // },
+    curve: {
+      control: 'select', // Dropdown for selecting curve type
+      options: ['linear', 'monotoneX', 'step'],
+      description: 'The curve type for the lines',
+    },
   },
 } satisfies Meta<typeof LineChart>;
 
@@ -300,5 +310,6 @@ type Story = StoryObj<typeof meta>;
 export const Example: Story = {
   args: {
     data: sampleData,
+    curve: 'linear'
   },
 };
