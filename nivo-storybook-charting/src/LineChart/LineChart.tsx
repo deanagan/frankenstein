@@ -4,6 +4,17 @@ import { useState } from 'react';
 
 type LineChartData = Serie & { color?: string };
 
+// Use below to customise tooltip
+// const CustomTooltip = ({ point }) => {
+//     return (
+//         <div style={{ padding: "10px", background: "#fff", border: "1px solid #ccc" }}>
+//             <strong>{point.data.x}</strong>
+//             <div>Y: {point.data.y}</div>
+//             <div>Info: {point.data.info}</div> {/* Additional info */}
+//         </div>
+//     );
+// };
+
 const CustomBackgroundLayer: React.FC<CustomLayerProps> = ({ yScale, innerWidth }) => {
     const yScaleFn = yScale as (value: number) => number;
 
@@ -19,6 +30,28 @@ const CustomBackgroundLayer: React.FC<CustomLayerProps> = ({ yScale, innerWidth 
                 opacity={0.2}
             />
 
+            {/* Label background and text for the blue region */}
+            <rect
+                x={-72}                              // Offset to the left of y-axis
+                y={yScaleFn(80)}                 // Center background vertically within region
+                width={50}                           // Width of the label background
+                height={84}                          // Height of the label background
+                fill="blue"                          // Background color matching the rectangle
+                opacity={0.3}
+            />
+
+            {/* Label to the left of the y-axis */}
+            <text
+                x={-40}                            // Position label to the left of the y-axis
+                y={yScaleFn(40)}                      // Center label within the rectangle
+                fill="blue"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fontSize="12px"
+            >
+                LZ
+            </text>
+
             {/* Green zone from y = 600 to y = 900 */}
             <rect
                 x={0}
@@ -28,6 +61,27 @@ const CustomBackgroundLayer: React.FC<CustomLayerProps> = ({ yScale, innerWidth 
                 fill="green"
                 opacity={0.2}
             />
+
+            {/* <rect
+                x={-60}
+                y={yScaleFn(7) - 10}                 // Center background vertically within region
+                width={50}
+                height={20}
+                fill="green"
+                opacity={0.3}
+            /> */}
+
+            {/* Label to the left of the second rectangle */}
+            <text
+                x={-50}                            // Position label to the left of the y-axis
+                y={yScaleFn(200)}                      // Center label within the rectangle
+                fill="green"
+                textAnchor="middle"
+                dominantBaseline="middle"
+                fontSize="12px"
+            >
+                HZ
+            </text>
         </>
     );
 };
@@ -78,8 +132,8 @@ const WrappedResponsiveLine = ({ data, curve }: LineChartProps) => {
             axisBottom={{
                 tickSize: 5,
                 tickPadding: 5,
-                tickRotation: 0,
-                legend: 'transportation',
+                tickRotation: 20, // rotate to fit
+                legend: 'Date',
                 legendOffset: 36,
                 legendPosition: 'middle',
                 truncateTickAt: 0
@@ -87,7 +141,7 @@ const WrappedResponsiveLine = ({ data, curve }: LineChartProps) => {
             axisLeft={{
                 tickSize: 5,
                 tickPadding: 5,
-                tickRotation: 0,
+                tickRotation: -45, // rotate to fit
                 legend: 'count',
                 legendOffset: -40,
                 legendPosition: 'middle',
@@ -101,6 +155,7 @@ const WrappedResponsiveLine = ({ data, curve }: LineChartProps) => {
             pointLabelYOffset={-12}
             enableArea={true}
             enableTouchCrosshair={true}
+            //tooltip={CustomTooltip} // TODO: Use your custom tooltip component
             useMesh={true}
             legends={[
                 {
@@ -148,7 +203,7 @@ const WrappedResponsiveLine = ({ data, curve }: LineChartProps) => {
 }
 
 const LineChart = (lineChartData: LineChartProps) => {
-    return (<div style={{ height: 400, width: 800 }}><WrappedResponsiveLine {...lineChartData} /></div>);
+    return (<div style={{ height: 400, width: 900 }}><WrappedResponsiveLine {...lineChartData} /></div>);
 };
 
 export default LineChart;

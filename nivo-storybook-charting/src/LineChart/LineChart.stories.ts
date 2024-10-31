@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import LineChart from './LineChart';
 
-
+// TODO: Add more data values
 
 const sampleData = [
     {
@@ -9,51 +9,51 @@ const sampleData = [
         "color": "green", //"hsl(357, 70%, 50%)",
         "data": [
             {
-                "x": "plane",
+                "x": "January 2024",
                 "y": 134
             },
             {
-                "x": "helicopter",
+                "x": "February 2024",
                 "y": 102
             },
             {
-                "x": "boat",
+                "x": "March 2024",
                 "y": 195
             },
             {
-                "x": "train",
+                "x": "April 2024",
                 "y": 5
             },
             {
-                "x": "subway",
+                "x": "May 2024",
                 "y": 101
             },
             {
-                "x": "bus",
+                "x": "June 2024",
                 "y": 199
             },
             {
-                "x": "car",
+                "x": "July 2024",
                 "y": 178
             },
             {
-                "x": "moto",
+                "x": "August 2024",
                 "y": 89
             },
             {
-                "x": "bicycle",
+                "x": "September 2024",
                 "y": 194
             },
             {
-                "x": "horse",
+                "x": "October 2024",
                 "y": 271
             },
             {
-                "x": "skateboard",
+                "x": "November 2024",
                 "y": 285
             },
             {
-                "x": "others",
+                "x": "December 2024",
                 "y": 225
             }
         ]
@@ -63,51 +63,51 @@ const sampleData = [
         "color": "blue",
         "data": [
             {
-                "x": "plane",
+                "x": "January 2024",
                 "y": 270
             },
             {
-                "x": "helicopter",
+                "x": "February 2024",
                 "y": 187
             },
             {
-                "x": "boat",
+                "x": "March 2024",
                 "y": 103
             },
             {
-                "x": "train",
+                "x": "April 2024",
                 "y": 170
             },
             {
-                "x": "subway",
+                "x": "May 2024",
                 "y": 70
             },
             {
-                "x": "bus",
+                "x": "June 2024",
                 "y": 215
             },
             {
-                "x": "car",
+                "x": "July 2024",
                 "y": 113
             },
             {
-                "x": "moto",
+                "x": "August 2024",
                 "y": 216
             },
             {
-                "x": "bicycle",
+                "x": "September 2024",
                 "y": 209
             },
             {
-                "x": "horse",
+                "x": "October 2024",
                 "y": 283
             },
             {
-                "x": "skateboard",
+                "x": "November 2024",
                 "y": 170
             },
             {
-                "x": "others",
+                "x": "December 2024",
                 "y": 12
             }
         ]
@@ -117,51 +117,51 @@ const sampleData = [
         "color": "red",
         "data": [
             {
-                "x": "plane",
+                "x": "January 2024",
                 "y": 73
             },
             {
-                "x": "helicopter",
+                "x": "February 2024",
                 "y": 79
             },
             {
-                "x": "boat",
+                "x": "March 2024",
                 "y": 222
             },
             {
-                "x": "train",
+                "x": "April 2024",
                 "y": 172
             },
             {
-                "x": "subway",
+                "x": "May 2024",
                 "y": 273
             },
             {
-                "x": "bus",
+                "x": "June 2024",
                 "y": 13
             },
             {
-                "x": "car",
+                "x": "July 2024",
                 "y": 68
             },
             {
-                "x": "moto",
+                "x": "August 2024",
                 "y": 107
             },
             {
-                "x": "bicycle",
+                "x": "September 2024",
                 "y": 279
             },
             {
-                "x": "horse",
+                "x": "October 2024",
                 "y": 138
             },
             {
-                "x": "skateboard",
+                "x": "November 2024",
                 "y": 76
             },
             {
-                "x": "others",
+                "x": "December 2024",
                 "y": 182
             }
         ]
@@ -171,51 +171,51 @@ const sampleData = [
         "color": "orange",
         "data": [
             {
-                "x": "plane",
+                "x": "January 2024",
                 "y": 125
             },
             {
-                "x": "helicopter",
+                "x": "February 2024",
                 "y": 253
             },
             {
-                "x": "boat",
+                "x": "March 2024",
                 "y": 63
             },
             {
-                "x": "train",
+                "x": "April 2024",
                 "y": 210
             },
             {
-                "x": "subway",
+                "x": "May 2024",
                 "y": 225
             },
             {
-                "x": "bus",
+                "x": "June 2024",
                 "y": 123
             },
             {
-                "x": "car",
+                "x": "July 2024",
                 "y": 223
             },
             {
-                "x": "moto",
+                "x": "August 2024",
                 "y": 265
             },
             {
-                "x": "bicycle",
+                "x": "September 2024",
                 "y": 99
             },
             {
-                "x": "horse",
+                "x": "October 2024",
                 "y": 270
             },
             {
-                "x": "skateboard",
+                "x": "November 2024",
                 "y": 189
             },
             {
-                "x": "others",
+                "x": "December 2024",
                 "y": 87
             }
         ]
@@ -225,51 +225,51 @@ const sampleData = [
         "color": "purple",
         "data": [
             {
-                "x": "plane",
-                "y": 6
+                "x": "January 2024",
+                "y": null // set to null to have a discontinued line effect
             },
             {
-                "x": "helicopter",
+                "x": "February 2024",
                 "y": 77
             },
             {
-                "x": "boat",
+                "x": "March 2024",
                 "y": 98
             },
             {
-                "x": "train",
+                "x": "April 2024",
                 "y": 189
             },
             {
-                "x": "subway",
-                "y": 13
+                "x": "May 2024",
+                "y": null // set to null to have a discontinued line effect
             },
             {
-                "x": "bus",
+                "x": "June 2024",
                 "y": 158
             },
             {
-                "x": "car",
+                "x": "July 2024",
                 "y": 177
             },
             {
-                "x": "moto",
+                "x": "August 2024",
                 "y": 101
             },
             {
-                "x": "bicycle",
+                "x": "September 2024",
                 "y": 212
             },
             {
-                "x": "horse",
+                "x": "October 2024",
                 "y": 140
             },
             {
-                "x": "skateboard",
+                "x": "November 2024",
                 "y": 30
             },
             {
-                "x": "others",
+                "x": "December 2024",
                 "y": 28
             }
         ]
