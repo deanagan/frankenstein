@@ -1,7 +1,37 @@
-import { ResponsiveLine, Serie } from '@nivo/line'
+import { ResponsiveLine, Serie, CustomLayerProps } from '@nivo/line';
+
 import { useState } from 'react';
 
 type LineChartData = Serie & { color?: string };
+
+const CustomBackgroundLayer: React.FC<CustomLayerProps> = ({ yScale, innerWidth }) => {
+    const yScaleFn = yScale as (value: number) => number;
+
+    return (
+        <>
+            {/* Blue zone from y = 0 to y = 600 */}
+            <rect
+                x={0}
+                y={yScaleFn(600)}       // y-axis value where the blue zone starts
+                width={innerWidth}        // Full chart width
+                height={yScaleFn(0) - yScaleFn(600)} // From y = 4 down to y = 0
+                fill="blue"
+                opacity={0.2}
+            />
+
+            {/* Green zone from y = 600 to y = 900 */}
+            <rect
+                x={0}
+                y={yScaleFn(900)}       // y-axis value where the green zone starts
+                width={innerWidth}        // Full chart width
+                height={yScaleFn(600) - yScaleFn(900)} // From y = 10 down to y = 4
+                fill="green"
+                opacity={0.2}
+            />
+        </>
+    );
+};
+
 
 export type LineChartProps = {
     data: LineChartData[];
@@ -101,6 +131,17 @@ const WrappedResponsiveLine = ({ data, curve }: LineChartProps) => {
                         }
                     ]
                 }
+            ]}
+            layers={[
+                CustomBackgroundLayer, // Add custom background layer first
+                'grid',                // Optional grid layer
+                'markers',
+                'axes',
+                'lines',
+                'points',
+                'slices',
+                'mesh',
+                'legends'
             ]}
         />
     );
