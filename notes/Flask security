@@ -1,0 +1,90 @@
+Here’s the complete guide for implementing token validation and refresh in a pure web API (no login, no user management). This guide assumes the use of a shared secret key for API authorization.
+
+1. Generating a Secure Secret Key
+
+To generate a secure secret key for your tokens:
+
+Option 1: Using Python
+
+Run this script in Python:
+
+import secrets
+print(secrets.token_urlsafe(32))
+
+Option 2: Command-Line
+
+On Linux or macOS:
+
+openssl rand -base64 32
+
+The generated key will look like:
+
+'KzOXe7PvR7X-v4ChD0E3fnbXQmTx_A7t_M3l7Nk5Z9o'
+
+2. Setting Up the .env File
+
+Create a .env file in the root directory of your project to store sensitive information like the secret key:
+
+.env
+
+JWT_SECRET_KEY=KzOXe7PvR7X-v4ChD0E3fnbXQmTx_A7t_M3l7Nk5Z9o
+
+3. Adding .env to .gitignore
+
+Ensure .env is not committed to version control by adding it to .gitignore:
+
+.gitignore
+
+# Ignore environment variables file
+.env
+
+4. Configuring Flask to Use the Secret Key
+
+Install python-dotenv to load environment variables and flask-jwt-extended for JWT handling:
+
+pip install python-dotenv flask-jwt-extended
+
+config.py
+
+Create a configuration file to load the environment variables and define token expiration times:
+
+from dotenv import load_dotenv
+import os
+
+# Load the .env file
+load_dotenv()
+
+class Config:
+    JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")  # Secret key for JWT
+    JWT_ACCESS_TOKEN_EXPIRES = 300  # Access token expires in 5 minutes
+    JWT_REFRESH_TOKEN_EXPIRES = 86400  # Refresh token expires in 1 day
+
+5. Creating the Flask App
+
+app.py
+
+Set up the Flask app to use JWT for access and refresh tokens:
+
+from flask import Flask, request, jsonify
+from flask_jwt_extended import (
+    JWTManager,
+    create_access_token,
+    create_refresh_token,
+    jwt_required,
+    get_jwt_identity,
+)
+
+# Load configuration
+from config import Config
+
+app = Flask(__name__)
+app.config.from_object(Config)
+
+# Initialize JWT Manager
+jwt = JWTManager(app)
+
+6. Adding Endpoints for API Token Validation
+
+Here’s how to structure your API for access and refresh token handling.
+
+a. **Generate
