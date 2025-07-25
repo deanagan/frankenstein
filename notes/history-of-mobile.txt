@@ -1,0 +1,85 @@
+html
+--
+<section>
+  <h2>📱 Evolution of Mobile Development</h2>
+  <div class="timeline">
+    <div class="event">
+      <div class="dot">🕰️</div>
+      <div class="label"><strong>1994</strong><br>IBM Simon</div>
+    </div>
+    <div class="event">
+      <div class="dot">📲</div>
+      <div class="label"><strong>2001</strong><br>NTT DoCoMo</div>
+    </div>
+    <div class="event">
+      <div class="dot">🍎</div>
+      <div class="label"><strong>2007</strong><br>iPhone</div>
+    </div>
+    <div class="event">
+      <div class="dot">🛒</div>
+      <div class="label"><strong>2008</strong><br>App Stores</div>
+    </div>
+    <div class="event">
+      <div class="dot">🔄</div>
+      <div class="label"><strong>2015</strong><br>React Native</div>
+    </div>
+    <div class="event">
+      <div class="dot">🎨</div>
+      <div class="label"><strong>2017</strong><br>Flutter</div>
+    </div>
+    <div class="event">
+      <div class="dot">🟦</div>
+      <div class="label"><strong>2021</strong><br>.NET MAUI</div>
+    </div>
+    <div class="event">
+      <div class="dot">🧩</div>
+      <div class="label"><strong>2023+</strong><br>Compose Multiplatform</div>
+    </div>
+  </div>
+</section>
+
+--
+
+css
+--
+<style>
+.timeline {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  border-top: 2px solid #ccc;
+  padding-top: 1rem;
+  position: relative;
+}
+
+.event {
+  text-align: center;
+  flex: 1;
+  min-width: 80px;
+  position: relative;
+}
+
+.event::after {
+  content: '';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 10px;
+  background: #ccc;
+}
+
+.dot {
+  font-size: 1.8em;
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  font-size: 0.9em;
+}
+</style>
+
+--
