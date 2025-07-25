@@ -1,85 +1,125 @@
 html
 --
 <section>
-  <h2>📱 Evolution of Mobile Development</h2>
-  <div class="timeline">
-    <div class="event">
-      <div class="dot">🕰️</div>
-      <div class="label"><strong>1994</strong><br>IBM Simon</div>
+  <h2>📱 Timeline of Mobile Development</h2>
+  <div class="v-timeline">
+    <div class="v-event">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/IBM_logo.svg/120px-IBM_logo.svg.png" alt="IBM" />
+      <div>
+        <h4>1994 – IBM Simon</h4>
+        <p>First smartphone with built-in apps</p>
+      </div>
     </div>
-    <div class="event">
-      <div class="dot">📲</div>
-      <div class="label"><strong>2001</strong><br>NTT DoCoMo</div>
+
+    <div class="v-event">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/NTT_Docomo_logo.svg" alt="NTT DoCoMo" />
+      <div>
+        <h4>2001 – NTT DoCoMo</h4>
+        <p>First downloadable mobile content</p>
+      </div>
     </div>
-    <div class="event">
-      <div class="dot">🍎</div>
-      <div class="label"><strong>2007</strong><br>iPhone</div>
+
+    <div class="v-event">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple" />
+      <div>
+        <h4>2007 – iPhone</h4>
+        <p>Touch UI, no App Store at launch</p>
+      </div>
     </div>
-    <div class="event">
-      <div class="dot">🛒</div>
-      <div class="label"><strong>2008</strong><br>App Stores</div>
+
+    <div class="v-event">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/App_Store_%28iOS%29.svg" alt="App Store" />
+      <div>
+        <h4>2008 – App Store & Android Market</h4>
+        <p>Apps become mainstream</p>
+      </div>
     </div>
-    <div class="event">
-      <div class="dot">🔄</div>
-      <div class="label"><strong>2015</strong><br>React Native</div>
+
+    <div class="v-event">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React Native" />
+      <div>
+        <h4>2015 – React Native</h4>
+        <p>JS-powered native apps from Meta</p>
+      </div>
     </div>
-    <div class="event">
-      <div class="dot">🎨</div>
-      <div class="label"><strong>2017</strong><br>Flutter</div>
+
+    <div class="v-event">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png" alt="Flutter" />
+      <div>
+        <h4>2017 – Flutter</h4>
+        <p>Dart UI toolkit with hot reload</p>
+      </div>
     </div>
-    <div class="event">
-      <div class="dot">🟦</div>
-      <div class="label"><strong>2021</strong><br>.NET MAUI</div>
+
+    <div class="v-event">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/.NET_Core_Logo.svg" alt=".NET MAUI" />
+      <div>
+        <h4>2021 – .NET MAUI</h4>
+        <p>Unified C# platform from Microsoft</p>
+      </div>
     </div>
-    <div class="event">
-      <div class="dot">🧩</div>
-      <div class="label"><strong>2023+</strong><br>Compose Multiplatform</div>
+
+    <div class="v-event">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Kotlin_Icon.png" alt="Jetpack Compose" />
+      <div>
+        <h4>2023+ – Compose Multiplatform</h4>
+        <p>Kotlin UI across Android, desktop, and more</p>
+      </div>
     </div>
   </div>
 </section>
+
 
 --
 
 css
 --
-<style>
-.timeline {
+/* Timeline.css */
+.v-timeline {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-  border-top: 2px solid #ccc;
+  flex-direction: column;
+  gap: 1.5rem;
   padding-top: 1rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.v-event {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-left: 3px solid #ccc;
+  padding-left: 1rem;
   position: relative;
 }
 
-.event {
-  text-align: center;
-  flex: 1;
-  min-width: 80px;
-  position: relative;
-}
-
-.event::after {
+.v-event::before {
   content: '';
+  width: 12px;
+  height: 12px;
+  background-color: #555;
+  border-radius: 50%;
   position: absolute;
-  top: -18px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 10px;
-  background: #ccc;
+  left: -7px;
+  top: 0.75rem;
 }
 
-.dot {
-  font-size: 1.8em;
-  margin-bottom: 0.5rem;
+.v-event img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
 }
 
-.label {
-  font-size: 0.9em;
+.v-event h4 {
+  margin: 0;
+  font-size: 1rem;
 }
-</style>
+
+.v-event p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
 
 --
