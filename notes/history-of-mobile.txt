@@ -123,3 +123,107 @@ css
 
 
 --
+
+<section>
+  <h2>Native vs Hybrid vs Cross‑Platform</h2>
+  <div style="display:flex;gap:2rem;justify-content:center;align-items:flex-start;font-size:0.9em;">
+
+    <div style="flex:1;">
+      <h3>Native</h3>
+      <ul>
+        <li>Separate codebases</li>
+        <li>Best performance</li>
+        <li>Languages: Java/Kotlin, Swift/Obj‑C</li>
+      </ul>
+    </div>
+
+    <div style="flex:1;">
+      <h3>Hybrid</h3>
+      <ul>
+        <li>WebView with HTML/JS/CSS</li>
+        <li>Fast to build, web skills reuse</li>
+        <li>Examples: Cordova, Ionic</li>
+      </ul>
+    </div>
+
+    <div style="flex:1;">
+      <h3>Cross‑Platform</h3>
+      <ul>
+        <li>Shared code + near‑native UI</li>
+        <li>Reduced duplication</li>
+        <li>Examples: React Native, Flutter, MAUI, Compose</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+--
+
+<section>
+  <h2>How Development Evolved</h2>
+  <svg width="100%" height="220">
+    <!-- Native -->
+    <rect x="30" y="40" width="160" height="80" fill="#4CAF50" rx="8"></rect>
+    <text x="110" y="85" fill="white" text-anchor="middle" font-size="16">Native</text>
+
+    <!-- Arrow -->
+    <line x1="190" y1="80" x2="250" y2="80" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+    <!-- Hybrid -->
+    <rect x="250" y="40" width="160" height="80" fill="#FFC107" rx="8"></rect>
+    <text x="330" y="85" fill="black" text-anchor="middle" font-size="16">Hybrid</text>
+
+    <!-- Arrow -->
+    <line x1="410" y1="80" x2="470" y2="80" stroke="black" stroke-width="2" marker-end="url(#arrow)" />
+
+    <!-- Cross Platform -->
+    <rect x="470" y="40" width="200" height="80" fill="#2196F3" rx="8"></rect>
+    <text x="570" y="85" fill="white" text-anchor="middle" font-size="16">Cross-Platform</text>
+
+    <defs>
+      <marker id="arrow" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto" markerUnits="strokeWidth">
+        <path d="M0,0 L0,6 L9,3 z" fill="#000"/>
+      </marker>
+    </defs>
+  </svg>
+
+  <p style="font-size:0.9em;margin-top:1rem;">
+    From writing two separate native apps → Hybrid WebView apps → Modern cross-platform frameworks
+  </p>
+</section>
+
+--
+Hybrid Apps Today – Are They Still Popular?
+Hybrid (WebView) approach is much less popular today than it was in 2010–2015.
+
+Current status:
+Cordova and PhoneGap:
+
+PhoneGap was discontinued in 2020 (Adobe officially ended support).
+
+Cordova is still around but rarely chosen for new apps.
+
+Ionic:
+
+A modern successor to Cordova for hybrid apps. It still uses WebView but has improved tooling and a component library.
+
+Capacitor:
+
+A newer runtime by the Ionic team (modern replacement for Cordova).
+
+Why hybrid is less common:
+Performance and UX expectations are much higher now.
+
+Cross-platform (Flutter, React Native) delivers native performance with shared code, so they became the preferred choice.
+
+Hybrid is mostly used today for:
+
+Enterprise apps that need to quickly wrap existing web apps
+
+Simple apps with a heavy web content focus
+
+Summary:
+Hybrid = niche today.
+
+Cross-platform has become the default for teams who want shared code without losing native feel.
